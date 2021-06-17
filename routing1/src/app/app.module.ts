@@ -8,11 +8,13 @@ import { NewEmpComponent } from './new-emp/new-emp.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { MypipePipe } from './mypipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewEmpComponent
+    // MypipePipe
   ],
   imports: [
     BrowserModule,

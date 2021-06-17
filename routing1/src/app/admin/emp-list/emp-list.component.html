@@ -1,7 +1,13 @@
 <h2> Employee List</h2>
-<table *ngFor="let employee of employees">
+<table>
     <tr>
+        <th>Emp.Id</th>
+        <th>Emp. Name</th>
+        <th>Emp. ShortName</th>
+    </tr>
+    <tr *ngFor="let employee of employees">
         <td>{{employee.id}}.</td>
         <td>{{employee.name}}</td>
+        <td>{{employee.name | mypipe}}</td>
     </tr>
 </table>

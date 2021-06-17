@@ -6,12 +6,14 @@ import { EmpListComponent } from './emp-list/emp-list.component';
 import { EmpDetailsComponent } from './emp-details/emp-details.component';
 import { HttpCallService } from '../http-call-service.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { MypipePipe } from '../mypipe.pipe';
 
 console.log("lazy loading")
 @NgModule({
   declarations: [
     EmpListComponent,
-    EmpDetailsComponent
+    EmpDetailsComponent,
+    MypipePipe
   ],
   imports: [
     CommonModule,
