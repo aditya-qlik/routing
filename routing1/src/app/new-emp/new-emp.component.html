@@ -1,0 +1,174 @@
+<h2>
+    Sample Reactive Form
+</h2>
+<div class="container">
+    <div>
+        <form [formGroup]="signUpForm" (ngSubmit)='onSubmit()'>
+            <div class="form-group row">
+                <div class="col-25">
+                    <label for="id">Emp. Id:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" formControlName="id" placeholder="Enter Employee Id">
+                    <span *ngIf="signUpForm.controls['id'].errors">
+                        <span *ngIf="signUpForm.controls['id'].errors.required && signUpForm.controls['id'].touched">
+                            Please Enter Valid Emp. Id
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <div class="col-25">
+                    <label for="name"> Name:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" formControlName="name" placeholder="Enter Employee Name">
+                    <span *ngIf="signUpForm.controls['name'].errors">
+                        <span
+                            *ngIf="signUpForm.controls['name'].errors.required && signUpForm.controls['name'].touched">
+                            Please Enter Valid name
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <div class="col-25">
+                    <label for="name">User Name:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" formControlName="username" placeholder="Enter Employee UserName">
+                    <span *ngIf="signUpForm.controls['username'].errors">
+                        <span
+                            *ngIf="signUpForm.controls['username'].errors.required && signUpForm.controls['username'].touched">
+                            Please Enter Valid User name
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <div class="col-25">
+                    <label for="password">Password:</label>
+                </div>
+                <div class="col-75">
+                    <input type="password" formControlName="userPassword" placeholder="Enter password ">
+                    <span *ngIf="signUpForm.controls['userPassword'].errors">
+                        <span
+                            *ngIf="(signUpForm.controls['userPassword'].errors.required || signUpForm.controls['userPassword'].errors.minlength) && signUpForm.controls['userPassword'].touched">
+                            Please Enter Valid password (minimum 6 charaters)
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <div class="col-25">
+                    <label for="name">Email ID:</label>
+                </div>
+                <div class="col-75">
+                    <input type="email" formControlName="email" placeholder="Enter Employee email">
+                    <span *ngIf="signUpForm.controls['email'].errors">
+                        <span
+                            *ngIf="(signUpForm.controls['email'].errors.required || signUpForm.controls['email'].errors.email) && signUpForm.controls['email'].touched">
+                            Please Enter Valid email
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <div class="col-25">
+                    <label for="name">Phone No.:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" formControlName="number" placeholder="Enter phone number">
+                    <span *ngIf="signUpForm.controls['number'].errors">
+                        <span
+                            *ngIf="(signUpForm.controls['number'].errors.required || signUpForm.controls['number'].errors.minlength || signUpForm.controls['number'].errors.pattern) && signUpForm.controls['number'].touched">
+                            Please Enter Valid Phone No.
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <br>
+            <div formGroupName="address">
+                <div class="form-group row">
+                    Address-
+                </div>
+                <br>
+                <div class="form-group row">
+                    <div class="col-25">
+                        <label for="street">Street:</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" formControlName="street" placeholder="Enter street">
+                        <span *ngIf="signUpForm.controls['address'].controls['street'].errors">
+                            <span
+                                *ngIf="signUpForm.controls['address'].controls['street'].errors.required && signUpForm.controls['address'].controls['street'].touched">
+                                Please Enter Valid Street Name
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <div class="col-25">
+                        <label for="city">City:</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" formControlName="city" placeholder="Enter city">
+                        <span *ngIf="signUpForm.controls['address'].controls['city'].errors">
+                            <span
+                                *ngIf="signUpForm.controls['address'].controls['city'].errors.required && signUpForm.controls['address'].controls['city'].touched">
+                                Please Enter Valid City Name
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <br>
+                <div formGroupName="geo">
+                    <div class="form-group row">
+                        <label for="geo">Geo. Location-</label>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <div class="col-25">
+                            <label for="lat">Latitude:</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" formControlName="lat" placeholder="Enter street">
+                            <span *ngIf="signUpForm.controls['address'].controls['geo'].controls['lat'].errors">
+                                <span
+                                    *ngIf="(signUpForm.controls['address'].controls['geo'].controls['lat'].errors.required || signUpForm.controls['address'].controls['geo'].controls['lat'].errors.pattern) && signUpForm.controls['address'].controls['geo'].controls['lat'].touched">
+                                    Please Enter Valid latitude
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <div class="col-25">
+                            <label for="lng">Longitude:</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" formControlName="lng" placeholder="Enter street">
+                            <span *ngIf="signUpForm.controls['address'].controls['geo'].controls['lng'].errors">
+                                <span
+                                    *ngIf="(signUpForm.controls['address'].controls['geo'].controls['lng'].errors.required || signUpForm.controls['address'].controls['geo'].controls['lng'].errors.pattern) && signUpForm.controls['address'].controls['geo'].controls['lng'].touched">
+                                    Please Enter Valid latitude
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <span><input type="submit" value="Submit" [disabled]="!signUpForm.valid"></span>
+                <span><button class="reset" (click)='onReset()'>Reset</button></span>
+            </div>
+        </form>
+    </div>
+</div>
