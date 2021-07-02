@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpCallService } from '../http-call-service.service';
 
 @Component({
@@ -12,8 +13,9 @@ export class NewEmpComponent implements OnInit {
 
   signUpForm: FormGroup | any;
   submitted = false;
+  postData: any;
 
-  constructor(private fb: FormBuilder, private employeeService: HttpCallService) { }
+  constructor(private fb: FormBuilder, private employeeService: HttpCallService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group({
@@ -41,8 +43,8 @@ export class NewEmpComponent implements OnInit {
 
   geoLocation() {
     return {
-      lat: ['',Validators.compose([Validators.required, Validators.pattern(/([+-]?(\d+)+(\.\d+))|\d+$/)])],
-      lng: ['',Validators.compose([Validators.required, Validators.pattern(/([+-]?(\d+)+(\.\d+))|\d+$/)])]
+      lat: ['', Validators.compose([Validators.required, Validators.pattern(/([+-]?(\d+)+(\.\d+))|\d+$/)])],
+      lng: ['', Validators.compose([Validators.required, Validators.pattern(/([+-]?(\d+)+(\.\d+))|\d+$/)])]
     };
   }
 
@@ -54,14 +56,23 @@ export class NewEmpComponent implements OnInit {
     if (this.signUpForm.invalid) {
       return;
     }
+    this.postData = this.signUpForm.value;
+    console.log(this.postData);
+    // this.employeeService.postEmployee(this.signUpForm.value)
 
-    this.employeeService.postEmployee(this.signUpForm.value)
+  }
 
+  onPost(){
+    this.employeeService.postEmployee(this.postData)
   }
 
   onReset() {
     this.submitted = false;
     this.signUpForm.reset();
+  }
+
+  open(content: any) {
+    this.modalService.open(content)
   }
 
 }

@@ -1,6 +1,15 @@
-<ul>
-  <li><a routerLink="/new-employee" routerLinkActive="active">Add Employee</a></li>
-  <li><a routerLink="/employee-info/employees-list" routerLinkActive="active">Employees</a></li>
-  <li><a routerLink="/employee-info/employees-details" routerLinkActive="active">Employee Details</a></li>
-</ul>
+<nav ngbNav #nav="ngbNav" class="nav-tabs">
+  <ng-container ngbNavItem>
+    <a ngbNavLink routerLink="/new-employee" routerLinkActive="active">Add Employee</a>
+  </ng-container>
+  <ng-container ngbNavItem>
+    <a ngbNavLink routerLink="/employee-info/employees-list" routerLinkActive="active">Employees list</a>
+  </ng-container>
+  <ng-container ngbNavItem>
+    <a ngbNavLink routerLink="/employee-info/employees-details" routerLinkActive="active">Employee Details</a>
+  </ng-container>
+</nav>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
 <router-outlet></router-outlet>
